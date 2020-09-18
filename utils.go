@@ -59,7 +59,6 @@ func generateImage(digits []image.Image, count string) image.Image {
 	length := len(count)
 	img := image.NewNRGBA(image.Rect(0, 0, 200*length, 200))
 	for i, _ := range count {
-		fmt.Println(count)
 		index, _ := strconv.Atoi(count[i : i+1])
 		draw.Draw(img, image.Rect(i*200, 0, 200*length, 200), digits[index], digits[index].Bounds().Min, draw.Over)
 	}
