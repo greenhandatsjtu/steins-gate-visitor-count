@@ -25,6 +25,10 @@ func main() {
 	e.Use(middleware.Recover())
 	//e.Use(middleware.Logger())
 
+	e.GET("/", func(c echo.Context) error {
+		return c.NoContent(http.StatusOK)
+	})
+
 	e.GET("/:id", func(c echo.Context) error {
 		id := c.Param("id")
 
