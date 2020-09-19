@@ -4,4 +4,4 @@
 [![](https://steins-gate-visitor-count.greenhandatsjtu.repl.co/greenhandatsjtu)](https://github.com/greenhandatsjtu/steins-gate-visitor-count)
 
 ## 使用方法
-README添加`![](https://steins-gate-visitor-count.greenhandatsjtu.repl.co/{USERNAME})`
+README添加`[![](https://steins-gate-visitor-count.greenhandatsjtu.repl.co/{USERNAME})](https://github.com/greenhandatsjtu/steins-gate-visitor-count)`
