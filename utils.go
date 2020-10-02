@@ -19,10 +19,13 @@ type Count struct {
 }
 
 func cacheImages(digits *[]image.Image) {
-	for i := range *digits {
-		file, _ := os.Open(fmt.Sprintf("digits/%d.png", i))
+	cacheOneImage := func(no int) {
+		file, _ := os.Open(fmt.Sprintf("digits/%d.png", no))
 		defer file.Close()
-		(*digits)[i], _, _ = image.Decode(file)
+		(*digits)[no], _, _ = image.Decode(file)
+	}
+	for i := range *digits {
+		cacheOneImage(i) // to avoid resource leak
 	}
 }
 
@@ -58,7 +61,7 @@ func updateCounter(key string) string {
 func generateImage(digits []image.Image, count string) image.Image {
 	length := len(count)
 	img := image.NewNRGBA(image.Rect(0, 0, 200*length, 200))
-	for i, _ := range count {
+	for i := range count {
 		index, _ := strconv.Atoi(count[i : i+1])
 		draw.Draw(img, image.Rect(i*200, 0, 200*length, 200), digits[index], digits[index].Bounds().Min, draw.Over)
 	}
