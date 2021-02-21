@@ -39,7 +39,7 @@ func generateMd5(id string) (string, error) {
 }
 
 func updateCounter(key string) string {
-	req, _ := http.NewRequest("GET", "https://api.countapi.xyz/hit/visitor-badge/"+key, nil)
+	req, _ := http.NewRequest("GET", "https://api.countapi.xyz/hit/steins-gate-visitor-count/"+key, nil)
 	resp, _ := http.DefaultClient.Do(req)
 	defer resp.Body.Close()
 
