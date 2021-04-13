@@ -12,6 +12,8 @@ import (
 	"net/http"
 	"os"
 	"strconv"
+
+	"github.com/nfnt/resize"
 )
 
 type Count struct {
@@ -66,4 +68,11 @@ func generateImage(digits []image.Image, count string) image.Image {
 		draw.Draw(img, image.Rect(i*200, 0, 200*length, 200), digits[index], digits[index].Bounds().Min, draw.Over)
 	}
 	return img
+}
+
+// resizeImage resize image to specified ratio
+func resizeImage(img image.Image, ratio float64) image.Image {
+	width := uint(float64(img.Bounds().Max.X-img.Bounds().Min.X) * ratio)
+	height := uint(float64(img.Bounds().Max.Y-img.Bounds().Min.Y) * ratio)
+	return resize.Resize(width, height, img, resize.Lanczos3)
 }

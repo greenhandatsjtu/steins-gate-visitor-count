@@ -9,6 +9,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strconv"
 	"time"
 )
 
@@ -23,7 +24,7 @@ func main() {
 
 	e := echo.New()
 	e.Use(middleware.Recover())
-	//e.Use(middleware.Logger())
+	e.Use(middleware.Logger())
 
 	e.GET("/", func(c echo.Context) error {
 		return c.NoContent(http.StatusOK)
@@ -45,6 +46,13 @@ func main() {
 		}
 
 		img := generateImage(digits, count)
+		if v := c.QueryParam("ratio"); len(v) != 0 {
+			if ratio, err := strconv.ParseFloat(v, 64); err == nil {
+				img = resizeImage(img, ratio)
+			} else {
+				print(err)
+			}
+		}
 		buf := new(bytes.Buffer)
 		err = png.Encode(buf, img)
 		if err != nil {
