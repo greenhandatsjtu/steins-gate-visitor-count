@@ -47,10 +47,9 @@ func main() {
 
 		img := generateImage(digits, count)
 		if v := c.QueryParam("ratio"); len(v) != 0 {
-			if ratio, err := strconv.ParseFloat(v, 64); err == nil {
+			// only allow ratio in range (0,2]
+			if ratio, err := strconv.ParseFloat(v, 64); err == nil && ratio > 0 && ratio <= 2 {
 				img = resizeImage(img, ratio)
-			} else {
-				print(err)
 			}
 		}
 		buf := new(bytes.Buffer)
