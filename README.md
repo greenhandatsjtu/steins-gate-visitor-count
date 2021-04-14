@@ -6,5 +6,5 @@
 ## 使用方法
 README添加`[![](https://steins-gate-visitor-count.greenhandatsjtu.repl.co/{USERNAME})](https://github.com/greenhandatsjtu/steins-gate-visitor-count)`
 
-如果觉得图片太大，可以传入ratio参数进行缩放，如：
+如果觉得图片太大，可以传入ratio参数进行缩放（缩放范围是`(0,2]`），如：
 `[![](https://steins-gate-visitor-count.greenhandatsjtu.repl.co/greenhandatsjtu?ratio=0.75)](https://github.com/greenhandatsjtu/steins-gate-visitor-count)`
